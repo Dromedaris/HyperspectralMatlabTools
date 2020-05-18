@@ -53,7 +53,7 @@ for i = 1:nb
     HSI_rot(:,:,i) = rot90(frame,-1);
 end
 
-HSI = HSI_restrict(HSI_rot,1.5,0); 
+HSI = HSI_restrict(HSI_rot,10,0); 
 % this one sets negative values to 0 and values higher than 1.5 to 1.5
 % (otherwise the scale is of the charts)
 
