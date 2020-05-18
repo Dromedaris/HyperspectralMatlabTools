@@ -24,10 +24,6 @@ function r = HSI_pathfinder(HSI, reference_channel, interpolationmethod, limit)
 
 [n1, n2, nb] = size(HSI);
 
-HSI(:,end,:) = []; % avoid square matrix for testing
-
-[n1, n2, nb] = size(HSI);
-
 x1 = 1:n1;
 x2 = 1:n2;
 
@@ -51,18 +47,6 @@ for i = 1:nb
         ri = [0;0];
     else
         Vi = HSI(x1,x2,i);
-%         'HSI'
-%         [n1,n2]
-%         'mesh big'
-%         size(X1)
-%         size(X2)
-%         'Vi'
-%         size(Vi)
-%         'mesh small'
-%         size(X1q)
-%         size(X2q)
-%         'Vq'
-%         size(Vq)
         
         f = @(r) sum(sum((interp2(X1,X2,Vi,X1q+r(1),X2q+r(2),interpolationmethod)-Vq).^2));
         ri= fmincon(f,[0 0],[],[],[],[],[-limit,-limit],[limit,limit],[],options);
