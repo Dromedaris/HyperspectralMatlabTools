@@ -1,15 +1,13 @@
 function HSI_plot_frame(frame)
 
-% [nx,ny] = size(frame);
-% 
-% surf(frame,'EdgeColor','none')
-% view([0 0 1])
-% axis equal
-% axis([0, nx+1, 0, ny+1])
-% xlabel('x'),ylabel('y')
-% end
+[n1,n2] = size(frame);
+
 
 imagesc(frame)
-xlabel('column'),ylabel('row')
+xlabel('column')
+ylabel('row')
 axis equal
+
+axis([.5, n2+.5, .5, n1+.5])
+
 end
